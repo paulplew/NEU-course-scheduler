@@ -12,16 +12,16 @@ We are eager to create this tool because we believe it has the potential to help
 
 An interaction with the program might look like the following `>>` is program output and `<<` is user input:
 ```
->>Please input your desired courses:
-<<CS1800, CS1802, CS2500, CS2501, ENGW1111
->>Do you prefer morning, afternoon, or evening classes or have no preference? (\[m\]orning/\[a\]fternoon/\[e\]vening/\[no\] preference)
-<<Morning
->>Are there any days of the week you would like to have off? (\[mon\]day/\[tues\]day/\[wed\]nesday/\[thurs\]day/\[fri\]day)
-<<Wednesday
->>Is there a minimum or maximum amount of time you would like between classes? (min \_ max \_)
-<<min 0.5 max 3
->>Crunching...This may take a moment, please wait
->>Here is your schedule <SCHEDULE\> would you like to compute again? (\[Y\]es/\[N\]o)
-<<N
->>Thanks, printing the CRN numbers for your courses ...
+>> Please input your desired courses:
+<< CS1800, CS1802, CS2500, CS2501, ENGW1111
+>> Do you prefer morning, afternoon, or evening classes or have no preference? (\[m\]orning/\[a\]fternoon/\[e\]vening/\[no\] preference)
+<< Morning
+>> Are there any days of the week you would like to have off? (\[mon\]day/\[tues\]day/\[wed\]nesday/\[thurs\]day/\[fri\]day)
+<< Wednesday
+>> Is there a minimum or maximum amount of time you would like between classes? (min \_ max \_)
+<< min 0.5 max 3
+>> Crunching...This may take a moment, please wait
+>> Here is your schedule <SCHEDULE\> would you like to compute again? (\[Y\]es/\[N\]o)
+<< N
+>> Thanks, printing the CRN numbers for your courses ...
 ```
