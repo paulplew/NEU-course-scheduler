@@ -25,3 +25,12 @@ An interaction with the program might look like the following `>>` is program ou
 << N
 >> Thanks, printing the CRN numbers for your courses ...
 ```
+
+# Developer install
+
+1. Ensure python 3.11 and direnv are installed on your system
+2. Execute `python --version` and ensure the version is correct
+3. Build a venv by running `python -m venv .venv` 
+4. Install requirements by running `pip install -r requirements.txt` 
+5. Run `type python` and ensure output is 
+   `<cwd>/.venv/bin/python`
