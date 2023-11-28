@@ -35,37 +35,7 @@ time_between = input("Lastly, please enter the number of minutes that would be i
 
 
 print("Is this correct?")
-print("classes - ", classes)
+print("classes - ", courses)
 print("time prefferred - ",  time_pref)
 print("ideal day off - ", day_off)
 print("ideal time between classes - ", time_between)
-
-def days_of_week(list):
-    days = []
-    if list[0]:
-        days.append("Mon")
-    if list[1]:
-        days.append("Tue")
-    if list[2]:
-        days.append("Wed")
-    if list[3]:
-        days.append("Thur")
-    if list[4]:
-        days.append("Fri")
-    return days
-
-# "0915" => "9:15 AM"
-# "1600" => "4:00 PM"
-def military_to_standard(string):
-    if string[:2] == "00":
-        new_string = "12:" + string[2:] + " AM"
-        return new_string
-    if string[0] == "0":
-        new_string = string[1] + ":" + string[2:] + " AM"
-        return new_string
-    if string[:2] == "12":
-        new_string = string[:2] + ":" + string[2:] + " PM"
-        return new_string
-    else:
-        new_string = str(int(string[:2]) - 12) + ":" + string[2:] + " PM"
-        return new_string

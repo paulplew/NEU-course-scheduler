@@ -4,8 +4,8 @@ class Course:
     # professor, CRN, room, and Credits
     def __init__(
         self,
-        startTime: int,
-        endTime: int,
+        startTime: str, # military time string such as "1530"
+        endTime: str, # military time string such as "1530"
         days: List[bool],
         title: str,
         subject_course: str,
