@@ -5,7 +5,6 @@ classes = classes.split(", ")
 
 time_pref = input("Please enter m, a, or e to signift whether you'd prefer morning, afternoon, or evening classes.\n").lower()
 while (time_pref != 'm' and time_pref != 'a' and time_pref != 'e'):
-    print(time_pref)
     time_pref = input("Sorry, your previous response was not accepted, please try again between m for morning, a for afternoon, or e for evening classes.")
 
 
@@ -13,16 +12,14 @@ day_off = input("If you could have one day a week off, which would it be? Please
 while (day_off != "mon" and day_off != "tue" and day_off != "wed" and day_off != "thur" and day_off != "fri"):
     day_off = input("Your last reponse was not accepted, please try again to choose between whether you'd like mon, tue, wed, thur, or fri with no classes.")
 
-time_between = input("Lastly, please enter the minimum and maximum time (in minutes) between classes that would be ideal for you in the following format: min, max \n")
-time_between = time_between.split(", ")
-min_time = time_between[0]
-max_time = time_between[1]
+time_between = input("Lastly, please enter the number of minutes that would be ideal to have as a gap between classes. \n")
+
 
 print("Is this correct?")
 print("classes - ", classes)
 print("time prefferred - ",  time_pref)
 print("ideal day off - ", day_off)
-print("min and max time between classes - ", min_time, " ", max_time)
+print("ideal time between classes - ", time_between)
 
 def days_of_week(list):
     days = []
