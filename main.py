@@ -1,7 +1,12 @@
 
 print("Welcome to the NEU automatic course scheduler program.")
 classes = input("Please input the class codes for the classes you wish to take next semester in the following format: CS2500, ECON3100, ART1200 \n").upper()
-classes = classes.split(", ")
+
+courses = []
+for course in classes.split(", "):
+    courses.append([course[:-4], course[-4:]])
+classes = courses
+breakpoint()
 
 time_pref = input("Please enter m, a, or e to signift whether you'd prefer morning, afternoon, or evening classes.\n").lower()
 while (time_pref != 'm' and time_pref != 'a' and time_pref != 'e'):
