@@ -71,7 +71,7 @@ def tod_match(startTime, tod_pref):
 def schedule_generator(listoflistsof_courses):
     if len(listoflistsof_courses) > 0:
         # list of all course combinations
-        all_schedules = product(*listoflistsof_courses)
+        all_schedules = [item for item in product(*listoflistsof_courses)]
         #shuffle the list so we check them randomly (trying to make sure we don't get the same schedule everytime)
         random.shuffle(all_schedules)
         #iterate through combinations and return first valid one
