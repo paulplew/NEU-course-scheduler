@@ -1,4 +1,6 @@
 from api_controller import search_classes
+from hc_functions import *
+
 
 print("Welcome to the NEU automatic course scheduler program.")
 classes = input("Please input the class codes for the classes you wish to take next semester in the following format: CS2500, ECON3100, ART1200 \n").upper()
@@ -33,9 +35,10 @@ while (day_off != "mon" and day_off != "tue" and day_off != "wed" and day_off !=
 
 time_between = input("Lastly, please enter the number of minutes that would be ideal to have as a gap between classes. \n")
 
+print("Thanks! Give us a minute while the program creates a personal class schedule")
 
-print("Is this correct?")
-print("classes - ", courses)
-print("time prefferred - ",  time_pref)
-print("ideal day off - ", day_off)
-print("ideal time between classes - ", time_between)
+random_schedule = schedule_generator(courses)
+print("the energy of the initial (random) schedule is ", energy_function(random_schedule, time_pref, day_off, time_between))
+
+best_solution, best_energy = hillclimb_random_restarts(random_schedule, time_pref, day_off, time_between, 10, 3, courses)
+print(f"Best schedule is {best_solution} and best energy is {best_energy}.")
