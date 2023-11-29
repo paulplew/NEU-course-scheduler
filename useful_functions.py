@@ -56,11 +56,13 @@ def avg_time_between(listof_courses):
         schedule_dict[day].sort(key=lambda x: x[0])
         if len(schedule_dict[day]) > 1:
             for i in range(len(schedule_dict[day])-1):
-                gap += (datetime.strptime(schedule_dict[day][i+1][0],"%H%M") - datetime.strptime(schedule_dict[day][i][1],"%H%M"))
-                hours, minutes, seconds = map(int, gap.split(':'))
+                gap = (datetime.strptime(schedule_dict[day][i+1][0],"%H%M") - datetime.strptime(schedule_dict[day][i][1],"%H%M"))
+                hours, minutes, seconds = map(int, str(gap).split(':'))
                 total_gap += hours * 60 + minutes
                 n+=1
-                
+
+    if n==0:
+        return 0
     return round(total_gap / n)
 
 # takes a classes start time and prefferred time of day and returns a boolean whether it matches
@@ -77,7 +79,7 @@ def schedule_generator(listoflistsof_courses):
         #iterate through combinations and return first valid one
         for s in all_schedules:
             if valid_schedule(s):
-                return s
+                return list(s)
         print('ERROR, NO VALID SCHEDULES POSSIBLE')
     else:
         print("ERROR, COURSES PROVIDED")

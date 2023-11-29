@@ -34,7 +34,7 @@ day_off = input("If you could have one day a week off, which would it be? Please
 while (day_off != "mon" and day_off != "tue" and day_off != "wed" and day_off != "thur" and day_off != "fri"):
     day_off = input("Your last reponse was not accepted, please try again to choose between whether you'd like mon, tue, wed, thur, or fri with no classes.")
 
-time_between = input("Lastly, please enter the number of minutes that would be ideal to have as a gap between classes. \n")
+time_between = int(input("Lastly, please enter the number of minutes that would be ideal to have as a gap between classes. \n"))
 
 print("Thanks! Give us a minute while the program creates a personal class schedule")
 
