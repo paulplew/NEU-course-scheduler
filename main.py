@@ -6,6 +6,7 @@ from useful_functions import schedule_generator
 print("Welcome to the NEU automatic course scheduler program.")
 classes = input("Please input the class codes for the classes you wish to take next semester in the following format: CS2500, ECON3100, ART1200 \n").upper()
 
+print("Searching for courses.")
 courses = []
 course_titles = []
 for course in classes.split(", "):
@@ -14,6 +15,7 @@ for course in classes.split(", "):
     courses.append(search_classes(course[0], course[1]))
     
 valid_courses = []
+print("Done.")
 valid_course_titles = []
 for course, title in zip(courses, course_titles):
     # check if course is empty
@@ -22,10 +24,11 @@ for course, title in zip(courses, course_titles):
     else:
         valid_courses.append(course) 
         valid_course_titles.append(title) 
+
 courses = valid_courses
 course_titles = valid_course_titles
 
-time_pref = input("Please enter m, a, or e to signift whether you'd prefer morning, afternoon, or evening classes.\n").lower()
+time_pref = input("Please enter m, a, or e to signify whether you'd prefer morning, afternoon, or evening classes.\n").lower()
 while (time_pref != 'm' and time_pref != 'a' and time_pref != 'e'):
     time_pref = input("Sorry, your previous response was not accepted, please try again between m for morning, a for afternoon, or e for evening classes.")
 
