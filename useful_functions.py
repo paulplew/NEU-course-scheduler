@@ -19,20 +19,9 @@ def days_of_week(list):
 
 # "0915" => "9:15 AM"
 # "1600" => "4:00 PM"
-def military_to_standard(string):
-    if string[:2] == "00":
-        new_string = "12:" + string[2:] + " am"
-        return new_string
-    if string[0] == "0":
-        new_string = string[1] + ":" + string[2:] + " am"
-        return new_string
-    if string[:2] == "12":
-        new_string = string[:2] + ":" + string[2:] + " pm"
-        return new_string
-    else:
-        new_string = str(int(string[:2]) - 12) + ":" + string[2:] + " pm"
-        return new_string
-
+def military_to_standard(string_time: str) -> str:
+    time = datetime.strptime(string_time, "%H%M")
+    return time.strftime("%I:%M %p")
 
 # list of courses => rounded avg time between classes in min
 # lsit turns into dictionary like {"mon": [(915, 1020), (1030, 1135)], "tue" : [(800, 945)], etc}
@@ -61,14 +50,29 @@ def avg_time_between(listof_courses):
                 total_gap += hours * 60 + minutes
                 n+=1
 
+    # if there are no gaps 
     if n==0:
-        return 0
+        return None
     return round(total_gap / n)
 
 # takes a classes start time and prefferred time of day and returns a boolean whether it matches
-def tod_match(startTime, tod_pref):
-    return ((tod_pref == "m" and int(startTime) < 1200) or (tod_pref == "a" and int(startTime) >= 1200 and int(startTime) <= 1600) or (tod_pref == "e" and int(startTime) > 1600))
+def time_of_day_score(startTime, tod_pref):
+    # morning more points as it approaches 8:00am
+    # afternoon more points at is approaches 1:00pm
+    # evening more points as it approaches 4:30pm
+    goal_time = -1
+    if tod_pref == "m":
+        goal_time = 800
+    elif tod_pref == "a":
+        goal_time = 1300
+    elif tod_pref == "e":
+        goal_time = 1630
 
+    assert goal_time != -1, f"Incorrect time of day preference provided: {tod_pref}"
+    
+    # every hour away from the goal is -25 points from the starting 50 points
+    return 50 - ((abs(goal_time - int(startTime)) // 60) * 25)
+ 
 # generates a random schedule from the 2d list of courses
 def schedule_generator(listoflistsof_courses):
     if len(listoflistsof_courses) > 0:

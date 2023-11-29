@@ -32,7 +32,7 @@
         "subjectCourse": "CS2510",
         "faculty": [
             {
-                "bannerId": "311792",
+                "bannerId": "1812092",
                 "category": null,
                 "class": "net.hedtech.banner.student.faculty.FacultyResultDecorator",
                 "courseReferenceNumber": "30199",
@@ -121,8 +121,8 @@
         "courseTitle": "Fundamentals of Computer Science 2",
         "creditHours": null,
         "maximumEnrollment": 114,
-        "enrollment": 40,
-        "seatsAvailable": 74,
+        "enrollment": 42,
+        "seatsAvailable": 72,
         "waitCapacity": 0,
         "waitCount": 0,
         "waitAvailable": 0,
@@ -139,7 +139,7 @@
         "subjectCourse": "CS2510",
         "faculty": [
             {
-                "bannerId": "311791",
+                "bannerId": "1812091",
                 "category": null,
                 "class": "net.hedtech.banner.student.faculty.FacultyResultDecorator",
                 "courseReferenceNumber": "30198",
@@ -228,8 +228,8 @@
         "courseTitle": "Fundamentals of Computer Science 2",
         "creditHours": null,
         "maximumEnrollment": 40,
-        "enrollment": 0,
-        "seatsAvailable": 40,
+        "enrollment": 30,
+        "seatsAvailable": 10,
         "waitCapacity": 0,
         "waitCount": 0,
         "waitAvailable": 0,
@@ -246,7 +246,7 @@
         "subjectCourse": "CS2510",
         "faculty": [
             {
-                "bannerId": "311793",
+                "bannerId": "1812093",
                 "category": null,
                 "class": "net.hedtech.banner.student.faculty.FacultyResultDecorator",
                 "courseReferenceNumber": "30981",
@@ -256,7 +256,7 @@
                 "term": "202430"
             },
             {
-                "bannerId": "311794",
+                "bannerId": "1812094",
                 "category": null,
                 "class": "net.hedtech.banner.student.faculty.FacultyResultDecorator",
                 "courseReferenceNumber": "30981",
@@ -363,7 +363,7 @@
         "subjectCourse": "CS2510",
         "faculty": [
             {
-                "bannerId": "311795",
+                "bannerId": "1812095",
                 "category": null,
                 "class": "net.hedtech.banner.student.faculty.FacultyResultDecorator",
                 "courseReferenceNumber": "32017",
@@ -470,7 +470,7 @@
         "subjectCourse": "CS2510",
         "faculty": [
             {
-                "bannerId": "311791",
+                "bannerId": "1812091",
                 "category": null,
                 "class": "net.hedtech.banner.student.faculty.FacultyResultDecorator",
                 "courseReferenceNumber": "34912",
@@ -577,7 +577,7 @@
         "subjectCourse": "CS2510",
         "faculty": [
             {
-                "bannerId": "311795",
+                "bannerId": "1812095",
                 "category": null,
                 "class": "net.hedtech.banner.student.faculty.FacultyResultDecorator",
                 "courseReferenceNumber": "32187",
@@ -684,7 +684,7 @@
         "subjectCourse": "CS2510",
         "faculty": [
             {
-                "bannerId": "311791",
+                "bannerId": "1812091",
                 "category": null,
                 "class": "net.hedtech.banner.student.faculty.FacultyResultDecorator",
                 "courseReferenceNumber": "34913",
@@ -773,8 +773,8 @@
         "courseTitle": "Fundamentals of Computer Science 2",
         "creditHours": null,
         "maximumEnrollment": 114,
-        "enrollment": 114,
-        "seatsAvailable": 0,
+        "enrollment": 115,
+        "seatsAvailable": -1,
         "waitCapacity": 0,
         "waitCount": 0,
         "waitAvailable": 0,
@@ -791,7 +791,7 @@
         "subjectCourse": "CS2510",
         "faculty": [
             {
-                "bannerId": "311795",
+                "bannerId": "1812095",
                 "category": null,
                 "class": "net.hedtech.banner.student.faculty.FacultyResultDecorator",
                 "courseReferenceNumber": "35466",
@@ -898,7 +898,7 @@
         "subjectCourse": "CS2510",
         "faculty": [
             {
-                "bannerId": "308546",
+                "bannerId": "1812096",
                 "category": null,
                 "class": "net.hedtech.banner.student.faculty.FacultyResultDecorator",
                 "courseReferenceNumber": "37144",
@@ -987,8 +987,8 @@
         "courseTitle": "Fundamentals of Computer Science 2",
         "creditHours": null,
         "maximumEnrollment": 60,
-        "enrollment": 0,
-        "seatsAvailable": 60,
+        "enrollment": 40,
+        "seatsAvailable": 20,
         "waitCapacity": 0,
         "waitCount": 0,
         "waitAvailable": 0,
@@ -1005,7 +1005,7 @@
         "subjectCourse": "CS2510",
         "faculty": [
             {
-                "bannerId": "311797",
+                "bannerId": "1812098",
                 "category": null,
                 "class": "net.hedtech.banner.student.faculty.FacultyResultDecorator",
                 "courseReferenceNumber": "39732",
@@ -1120,7 +1120,7 @@
         "subjectCourse": "CS2510",
         "faculty": [
             {
-                "bannerId": "311796",
+                "bannerId": "1812097",
                 "category": null,
                 "class": "net.hedtech.banner.student.faculty.FacultyResultDecorator",
                 "courseReferenceNumber": "39683",
@@ -1208,9 +1208,9 @@
         "scheduleTypeDescription": "Lecture",
         "courseTitle": "Fundamentals of Computer Science 2",
         "creditHours": null,
-        "maximumEnrollment": 50,
+        "maximumEnrollment": 60,
         "enrollment": 50,
-        "seatsAvailable": 0,
+        "seatsAvailable": 10,
         "waitCapacity": 0,
         "waitCount": 0,
         "waitAvailable": 0,
@@ -1221,13 +1221,13 @@
         "creditHourHigh": null,
         "creditHourLow": 4,
         "creditHourIndicator": null,
-        "openSection": false,
+        "openSection": true,
         "linkIdentifier": null,
         "isSectionLinked": false,
         "subjectCourse": "CS2510",
         "faculty": [
             {
-                "bannerId": "311796",
+                "bannerId": "1812097",
                 "category": null,
                 "class": "net.hedtech.banner.student.faculty.FacultyResultDecorator",
                 "courseReferenceNumber": "39730",
@@ -1334,7 +1334,7 @@
         "subjectCourse": "CS2510",
         "faculty": [
             {
-                "bannerId": "311796",
+                "bannerId": "1812097",
                 "category": null,
                 "class": "net.hedtech.banner.student.faculty.FacultyResultDecorator",
                 "courseReferenceNumber": "39731",

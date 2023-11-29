@@ -1,6 +1,6 @@
-from course_model import Course
-from useful_functions import days_of_week, avg_time_between, tod_match, valid_schedule
+from useful_functions import days_of_week, avg_time_between, time_of_day_score, valid_schedule
 import random
+from copy import deepcopy
 
 
 # takes in a list of courses and the user's prefferences and calculates the schedules' energy
@@ -8,24 +8,27 @@ def energy_function(schedule, tod_pref, day_off_pref, time_betweem_pref):
     energy = 0
     day_off = True
     for course in schedule:
-        if (tod_match(course.startTime, tod_pref)):
-            energy += 15
+        energy += time_of_day_score(course.startTime, tod_pref)
+
         if (day_off_pref in days_of_week(course.days)):
             day_off = False
+
     if day_off:
-        energy += 50
+        energy += 40
     avg_time_between_classes = avg_time_between(schedule)
-    energy -= abs(time_betweem_pref - avg_time_between_classes)
+    if avg_time_between_classes is not None:
+        energy -= abs(time_betweem_pref - avg_time_between_classes)
+
     return energy
 
 
 def hillclimb(schedule, tod_pref, day_off_pref, time_betweem_pref, iterations, all_courses):
-      	# variables to hold the best results 
-    best_solution = schedule
+    # variables to hold the best results 
+    best_solution = deepcopy(schedule)
     best_energy = energy_function(schedule, tod_pref, day_off_pref, time_betweem_pref)
     num_classes = len(schedule)
     
-    for i in range(iterations):
+    for _ in range(iterations):
 		#a random class index in the schedule and num of possible courses for that class
         class_idx = random.randint(0, num_classes-1)
         num_courses = len(all_courses[class_idx])
@@ -44,8 +47,8 @@ def hillclimb(schedule, tod_pref, day_off_pref, time_betweem_pref, iterations, a
         new_energy = energy_function(new_schedule, tod_pref, day_off_pref, time_betweem_pref)
 
 		# compares the new energy value to the previous best
-        if  new_energy < best_energy:
-            best_solution = new_schedule
+        if  new_energy > best_energy:
+            best_solution = deepcopy(new_schedule)
             best_energy = new_energy
 
 
@@ -54,13 +57,13 @@ def hillclimb(schedule, tod_pref, day_off_pref, time_betweem_pref, iterations, a
         
 def hillclimb_random_restarts(schedule, tod_pref, day_off_pref, time_betweem_pref, iterations, num_restarts, all_courses):
 	# variables to hold the best results 
-	best_solution = schedule
+	best_solution = deepcopy(schedule)
 	best_energy = energy_function(schedule, tod_pref, day_off_pref, time_betweem_pref)
 
-	for i in range(num_restarts):
+	for _ in range(num_restarts):
 		new_solution, new_energy = hillclimb(schedule, tod_pref, day_off_pref, time_betweem_pref, iterations, all_courses)
-		if new_energy < best_energy:
-			best_solution = new_solution
+		if new_energy > best_energy:
+			best_solution = deepcopy(new_solution)
 			best_energy = new_energy
 
 	return best_solution, best_energy

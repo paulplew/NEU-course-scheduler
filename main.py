@@ -45,6 +45,11 @@ print("Thanks! Give us a minute while the program creates a personal class sched
 random_schedule = schedule_generator(courses)
 print("the energy of the initial (random) schedule is ", energy_function(random_schedule, time_pref, day_off, time_between))
 
-best_solution, best_energy = hillclimb_random_restarts(random_schedule, time_pref, day_off, time_between, 10, 3, courses)
+best_solution, best_energy = hillclimb_random_restarts(random_schedule, time_pref, day_off, time_between, 1000, 30, courses)
 best_schedule = Schedule(best_solution)
-print(f"Best schedule is:\n{best_schedule} and best energy is {best_energy}.")
+print(f"Best schedule is:\n{best_schedule}\nand best energy is: {best_energy}.")
+
+r = Schedule(random_schedule)
+print(str(r))
+
+breakpoint()
