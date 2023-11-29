@@ -29,34 +29,39 @@ def search_classes(subject: str, course_number: int, page=0, num_results=50) -> 
     
     courses = []
     for item in search_results["data"]:
-        professor = item["faculty"][0]["displayName"]
-        subject_course = item["subjectCourse"]
-        title = item["courseTitle"]
-        startTime = item["meetingsFaculty"][0]["meetingTime"]["beginTime"]
-        endTime = item["meetingsFaculty"][0]["meetingTime"]["endTime"]
-        building = item["meetingsFaculty"][0]["meetingTime"]["buildingDescription"]
-        room = item["meetingsFaculty"][0]["meetingTime"]["room"]
-        days = [
-            item["meetingsFaculty"][0]["meetingTime"]["monday"],
-            item["meetingsFaculty"][0]["meetingTime"]["tuesday"],
-            item["meetingsFaculty"][0]["meetingTime"]["wednesday"],
-            item["meetingsFaculty"][0]["meetingTime"]["thursday"],
-            item["meetingsFaculty"][0]["meetingTime"]["friday"],
-        ]
-        course_reference_number = item["meetingsFaculty"][0]["courseReferenceNumber"]
-        credit_hours = item["meetingsFaculty"][0]["meetingTime"]["creditHourSession"]
-        
-        courses.append(Course(
-            startTime, 
-            endTime, 
-            days, 
-            title, 
-            professor, 
-            course_reference_number, 
-            room, 
-            building, 
-            credit_hours,
-            subject_course))
+        try:
+            professor = item["faculty"][0]["displayName"]
+            subject_course = item["subjectCourse"]
+            title = item["courseTitle"]
+            startTime = item["meetingsFaculty"][0]["meetingTime"]["beginTime"]
+            endTime = item["meetingsFaculty"][0]["meetingTime"]["endTime"]
+            building = item["meetingsFaculty"][0]["meetingTime"]["buildingDescription"]
+            room = item["meetingsFaculty"][0]["meetingTime"]["room"]
+            days = [
+                item["meetingsFaculty"][0]["meetingTime"]["monday"],
+                item["meetingsFaculty"][0]["meetingTime"]["tuesday"],
+                item["meetingsFaculty"][0]["meetingTime"]["wednesday"],
+                item["meetingsFaculty"][0]["meetingTime"]["thursday"],
+                item["meetingsFaculty"][0]["meetingTime"]["friday"],
+            ]
+            course_reference_number = item["meetingsFaculty"][0]["courseReferenceNumber"]
+            credit_hours = item["meetingsFaculty"][0]["meetingTime"]["creditHourSession"]
+            
+            courses.append(Course(
+                startTime, 
+                endTime, 
+                days, 
+                title, 
+                subject_course,
+                professor, 
+                course_reference_number, 
+                room, 
+                building, 
+                credit_hours,
+                ))
+        except IndexError:
+            continue
+
         
     return courses
     

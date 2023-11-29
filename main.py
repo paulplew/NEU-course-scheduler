@@ -1,4 +1,5 @@
 from api_controller import search_classes
+from course_model.schedule import Schedule
 from hillclimbing import energy_function, hillclimb_random_restarts
 from useful_functions import schedule_generator
 
@@ -45,4 +46,5 @@ random_schedule = schedule_generator(courses)
 print("the energy of the initial (random) schedule is ", energy_function(random_schedule, time_pref, day_off, time_between))
 
 best_solution, best_energy = hillclimb_random_restarts(random_schedule, time_pref, day_off, time_between, 10, 3, courses)
-print(f"Best schedule is {best_solution} and best energy is {best_energy}.")
+best_schedule = Schedule(best_solution)
+print(f"Best schedule is:\n{best_schedule} and best energy is {best_energy}.")
