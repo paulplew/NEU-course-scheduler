@@ -70,6 +70,10 @@ def time_of_day_score(startTime, tod_pref):
 
     assert goal_time != -1, f"Incorrect time of day preference provided: {tod_pref}"
     
+    if startTime is None:
+        # the class is async
+        return 0
+
     # every hour away from the goal is -25 points from the starting 50 points
     return 50 - ((abs(goal_time - int(startTime)) // 60) * 25)
  

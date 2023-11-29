@@ -8,7 +8,11 @@ def energy_function(schedule, tod_pref, day_off_pref, time_betweem_pref):
     energy = 0
     day_off = True
     for course in schedule:
-        energy += time_of_day_score(course.startTime, tod_pref)
+        if course.startTime is not None:
+            energy += time_of_day_score(course.startTime, tod_pref)
+        else:
+            # the course is async
+            energy += 1
 
         if (day_off_pref in days_of_week(course.days)):
             day_off = False
@@ -34,7 +38,7 @@ def hillclimb(schedule, tod_pref, day_off_pref, time_betweem_pref, iterations, a
         num_courses = len(all_courses[class_idx])
 		
 		# copy of the current best maze
-        new_schedule = best_solution
+        new_schedule = deepcopy(best_solution)
 
 		# upating the random class to be a random course form the 2d list of all courses
         new_schedule[class_idx] = all_courses[class_idx][random.randint(0,num_courses-1)]

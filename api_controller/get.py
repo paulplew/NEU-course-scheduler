@@ -61,6 +61,8 @@ def search_classes(subject: str, course_number: int, page=0, num_results=50) -> 
                 ))
         except IndexError:
             continue
+        except TypeError:
+            continue
 
         
     return courses

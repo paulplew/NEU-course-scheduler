@@ -48,8 +48,3 @@ print("the energy of the initial (random) schedule is ", energy_function(random_
 best_solution, best_energy = hillclimb_random_restarts(random_schedule, time_pref, day_off, time_between, 1000, 30, courses)
 best_schedule = Schedule(best_solution)
 print(f"Best schedule is:\n{best_schedule}\nand best energy is: {best_energy}.")
-
-r = Schedule(random_schedule)
-print(str(r))
-
-breakpoint()
