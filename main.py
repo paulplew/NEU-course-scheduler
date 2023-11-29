@@ -1,5 +1,5 @@
 from api_controller import search_classes
-from hc_functions import *
+from hc_functions import schedule_generator,  energy_function, hillclimb_random_restarts
 
 
 print("Welcome to the NEU automatic course scheduler program.")

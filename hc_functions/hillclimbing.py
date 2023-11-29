@@ -10,7 +10,7 @@ def energy_function(schedule, tod_pref, day_off_pref, time_betweem_pref):
     for course in schedule:
         if (tod_match(course.startTime, tod_pref)):
             energy += 15
-        if (day_off_pref in days_of_week(course.days))
+        if (day_off_pref in days_of_week(course.days)):
             day_off = False
     if day_off:
         energy += 50

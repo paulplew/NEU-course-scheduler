@@ -37,7 +37,7 @@ def military_to_standard(string):
 # list of courses => rounded avg time between classes in min
 # lsit turns into dictionary like {"mon": [(915, 1020), (1030, 1135)], "tue" : [(800, 945)], etc}
 def avg_time_between(listof_courses):
-    schedule_dict = ["mon": [],"tue": [],"wed": [],"thur": [],"fri": [],]
+    schedule_dict = {"mon": [],"tue": [],"wed": [],"thur": [],"fri": []}
     total_gap = 0
     n = 0
     for course in listof_courses:
@@ -56,7 +56,7 @@ def avg_time_between(listof_courses):
         schedule_dict[day].sort(key=lambda x: x[0])
         if len(schedule_dict[day]) > 1:
             for i in range(len(schedule_dict[day])-1):
-                gap += (datetime.strptime(schedule_dict[day][x+1][0],"%H%M") - datetime.strptime(schedule_dict[day][x][1],"%H%M"))
+                gap += (datetime.strptime(schedule_dict[day][i+1][0],"%H%M") - datetime.strptime(schedule_dict[day][i][1],"%H%M"))
                 hours, minutes, seconds = map(int, gap.split(':'))
                 total_gap += hours * 60 + minutes
                 n+=1
@@ -65,7 +65,7 @@ def avg_time_between(listof_courses):
 
 # takes a classes start time and prefferred time of day and returns a boolean whether it matches
 def tod_match(startTime, tod_pref):
-    return ((tod_pref == "m" and int(course.startTime) < 1200) or (tod_pref == "a" and int(course.startTime) >= 1200 and int(course.startTime) <= 1600) or (tod_pref == "e" and int(course.startTime) > 1600))
+    return ((tod_pref == "m" and int(startTime) < 1200) or (tod_pref == "a" and int(startTime) >= 1200 and int(startTime) <= 1600) or (tod_pref == "e" and int(startTime) > 1600))
 
 # generates a random schedule from the 2d list of courses
 def schedule_generator(listoflistsof_courses):
@@ -87,9 +87,9 @@ def schedule_generator(listoflistsof_courses):
 
 # determines whether provided schedule is valid (classes don't overlap)
 def valid_schedule(schedule):
-    schedule_dict = ["mon": [],"tue": [],"wed": [],"thur": [],"fri": [],]
+    schedule_dict = {"mon": [],"tue": [],"wed": [],"thur": [],"fri": []}
     valid = True
-    for course in listof_courses:
+    for course in schedule:
         if course.days[0]:
             schedule_dict["mon"].append((course.startTime, course.endTime))
         if course.days[1]:
@@ -105,7 +105,7 @@ def valid_schedule(schedule):
         schedule_dict[day].sort(key=lambda x: x[0])
         if len(schedule_dict[day]) > 1:
             for i in range(len(schedule_dict[day])-1):
-                gap = (int(schedule_dict[day][x+1][0]) - int(schedule_dict[day][x][1]))
+                gap = (int(schedule_dict[day][i+1][0]) - int(schedule_dict[day][i][1]))
                 if gap <= 0:
                     valid = False
     return valid
