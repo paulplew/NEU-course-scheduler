@@ -64,5 +64,6 @@ def format_course_info(course: Course):
         return "\n".join([
             f'{course_dict["subject_course"]}: {course_dict["title"]}',
             f'CRN: {course_dict["course_registration_number"]}, professor: {course_dict["professor"]}',
-            f'{course_dict["building"]}: {course_dict["room"]}, {course_dict["startTime"].strftime("%I:%M %p")} - {course_dict["endTime"].strftime("%I:%M %p")}'
+            f'{course_dict["building"]}: {course_dict["room"]}',
+            f'{course_dict["startTime"].strftime("%I:%M %p")} - {course_dict["endTime"].strftime("%I:%M %p")}'
         ])
