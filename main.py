@@ -31,13 +31,13 @@ for course, title in zip(courses, course_titles):
 courses = valid_courses
 course_titles = valid_course_titles
 
-time_pref = input("Please enter m, a, or e to signify whether you'd prefer morning, afternoon, or evening classes.\n").lower()
+time_pref = input("Please enter m, a, or e to signify whether you'd prefer morning, afternoon, or evening classes. \n").lower()
 while (time_pref != 'm' and time_pref != 'a' and time_pref != 'e'):
     time_pref = input("Sorry, your previous response was not accepted, please try again between m for morning, a for afternoon, or e for evening classes.")
 
 
-day_off = input("If you could have one day a week off, which would it be? Please enter mon, tue, wed, thur, or fri. \n").lower()
-while (day_off != "mon" and day_off != "tue" and day_off != "wed" and day_off != "thur" and day_off != "fri"):
+day_off = input("If you could have one day a week off, which would it be? Please enter mon, tue, wed, thur, or fri or press 'Enter' again to skip.\n").lower()
+while (day_off != "mon" and day_off != "tue" and day_off != "wed" and day_off != "thur" and day_off != "fri" and day_off != ""):
     day_off = input("Your last reponse was not accepted, please try again to choose between whether you'd like mon, tue, wed, thur, or fri with no classes.")
 
 time_between = int(input("Lastly, please enter the number of minutes that would be ideal to have as a gap between classes. \n"))
