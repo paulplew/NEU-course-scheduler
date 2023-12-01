@@ -17,12 +17,6 @@ def days_of_week(list):
         days.append("fri")
     return days
 
-# "0915" => "9:15 AM"
-# "1600" => "4:00 PM"
-def military_to_standard(string_time: str) -> str:
-    time = datetime.strptime(string_time, "%H%M")
-    return time.strftime("%I:%M %p")
-
 # list of courses => rounded avg time between classes in min
 # lsit turns into dictionary like {"mon": [(915, 1020), (1030, 1135)], "tue" : [(800, 945)], etc}
 def avg_time_between(listof_courses):
@@ -75,7 +69,7 @@ def time_of_day_score(startTime, tod_pref):
         return 0
 
     # every hour away from the goal is -25 points from the starting 50 points
-    return 50 - ((abs(goal_time - int(startTime)) // 60) * 25)
+    return 50 - ((abs(goal_time - int(startTime.strftime("%H%M"))) // 60) * 25)
  
 # generates a random schedule from the 2d list of courses
 def schedule_generator(listoflistsof_courses):

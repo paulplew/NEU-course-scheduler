@@ -1,5 +1,5 @@
+from datetime import datetime
 from copy import deepcopy 
-from useful_functions import military_to_standard
 
 class Course:
     # We want to keep the: startn and end times, the days, the class title,
@@ -17,8 +17,8 @@ class Course:
         building: str,
         credit_hours: int,
     ):
-        self.startTime = startTime
-        self.endTime = endTime
+        self.startTime = datetime.strptime(startTime, "%H%M")
+        self.endTime = datetime.strptime(endTime, "%H%M")
         self.days = days
         self.title = title
         self.subject_course = subject_course
@@ -60,12 +60,14 @@ class Course:
             f"{self.subject_course} | {self.title}",
             f"CRN: {self.course_registration_number}",
             f"{self.credit_hours} credits"
-            f"{military_to_standard(self.startTime)} - {military_to_standard(self.endTime)}",
+            f'{self.startTime.strftime("%I:%M %p")} - {self.endTime.strftime("%I:%M %p")}',
             f"{self.building} {self.room}"
         ])
         return all_info
 
     def __deepcopy__(self, memo):
-        return self.__class__(**deepcopy(self.__dict__(), memo))
+        dictionary = deepcopy(self.__dict__(), memo)
+        dictionary["startTime"] = dictionary["startTime"].strftime("%H%M")
+        dictionary["endTime"] = dictionary["endTime"].strftime("%H%M")
 
-
+        return self.__class__(**dictionary)

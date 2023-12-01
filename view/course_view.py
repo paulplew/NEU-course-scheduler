@@ -1,6 +1,5 @@
 import shutil
 from model import Schedule, Course
-from useful_functions import military_to_standard
 
 days = ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"]
 
@@ -42,5 +41,5 @@ def format_course_info(course: Course):
         f'{course_dict["subject_course"]}: {course_dict["title"]}',
         f'CRN: {course_dict["course_registration_number"]}',
         f'{course_dict["building"]}: {course_dict["room"]} {course_dict["professor"]}',
-        f'{military_to_standard(course_dict["startTime"])} - {military_to_standard(course_dict["endTime"])}'
+        f'{course_dict["startTime"].strftime("%I:%M %p")} - {course_dict["endTime"].strftime("%I:%M %p")}'
     ])
