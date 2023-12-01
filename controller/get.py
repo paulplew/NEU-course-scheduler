@@ -2,7 +2,7 @@ from typing import Final
 
 from .api_utils import get
 from .post import clearAuthentication, authenticate
-from course_model import Course
+from model import Course
 
 # Check docs here for more information about these endpoints https://apidocs.searchneu.com/banner/apiSpec.html
 # the url used to find term information
@@ -64,6 +64,7 @@ def search_classes(subject: str, course_number: int, page=0, num_results=50) -> 
         except TypeError:
             continue
 
+    clearAuthentication(cookies)
         
     return courses
     

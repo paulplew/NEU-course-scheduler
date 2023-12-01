@@ -1,3 +1,4 @@
+from copy import deepcopy 
 from useful_functions import military_to_standard
 
 class Course:
@@ -11,7 +12,7 @@ class Course:
         title: str,
         subject_course: str,
         professor: str,
-        crn: int,
+        course_registration_number: int,
         room: int,
         building: str,
         credit_hours: int,
@@ -22,13 +23,31 @@ class Course:
         self.title = title
         self.subject_course = subject_course
         self.professor = professor
-        self.course_registration_number = crn
+        self.course_registration_number = course_registration_number
         self.room = room
         self.building = building
         self.credit_hours = credit_hours
 
+    def meets_on_day(self, day: int):
+        assert day < 5, "Day should be in the range of 0-4"
+        return self.days[day]
 
-    # used by calling str(a) when a is a Course
+
+    # used to make a dict from the course
+    def __dict__(self):
+        return {
+            "startTime": self.startTime,
+            "endTime": self.endTime,
+            "days": self.days,
+            "title": self.title,
+            "subject_course": self.subject_course,
+            "professor": self.professor,
+            "course_registration_number": self.course_registration_number,
+            "room": self.room,
+            "building": self.building,
+            "credit_hours": self.credit_hours,
+        }
+
     def __str__(self) -> str:
         # XX1234 title
         # CRN: course_registration_number
@@ -45,3 +64,8 @@ class Course:
             f"{self.building} {self.room}"
         ])
         return all_info
+
+    def __deepcopy__(self, memo):
+        return self.__class__(**deepcopy(self.__dict__(), memo))
+
+

@@ -1,10 +1,13 @@
-from course_model.course import Course
+from model import Course
 
 class Schedule:
     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 
     def __init__(self, courses: list[Course]):
         self._courses = courses;
+
+    def get_courses(self) -> list[Course]:
+        return self._courses;
 
     def weekday_as_str(self, day: str) -> str:
         assert day in self.days, f"Invalid day provided: {day}"
@@ -28,16 +31,11 @@ class Schedule:
         # zip everything up with new lines
         return "\n".join(weekday_course_info)
 
-            
-    
-    def __str__(self) -> str:
-        days = []
-        for day in self.days:
-            days.append(self.weekday_as_str(day))
+    def __str__(self):
+        course_strings = []
+        for course in self._courses:
+            course_strings.append(str(course))
 
-        return "\n\n".join(days)
-
-
-
+        return "\n".join(course_strings)
 
 

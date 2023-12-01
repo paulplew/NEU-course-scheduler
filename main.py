@@ -1,7 +1,9 @@
-from api_controller import search_classes
-from course_model.schedule import Schedule
+from controller import search_classes
+from model import Schedule
 from hillclimbing import energy_function, hillclimb_random_restarts
 from useful_functions import schedule_generator
+from view import print_day
+from view.course_view import print_schedule
 
 
 print("Welcome to the NEU automatic course scheduler program.")
@@ -46,7 +48,10 @@ random_schedule = schedule_generator(courses)
 best_solution, best_energy = hillclimb_random_restarts(random_schedule, time_pref, day_off, time_between, 1000, 30, courses)
 
 original_schedule = Schedule(random_schedule)
-print(f"Starting schedule is:\n{original_schedule}\nand Starting energy is: {energy_function(random_schedule, time_pref, day_off, time_between)}.")
+print(f"Starting schedule with energy: {energy_function(random_schedule, time_pref, day_off, time_between)} is:\n\n")
+print_schedule(original_schedule)
+
 
 best_schedule = Schedule(best_solution)
-print(f"Best schedule is:\n{best_schedule}\nand best energy is: {best_energy}.")
+print(f"Best schedule with energy: {best_energy} is:\n\n")
+print_schedule(best_schedule)
