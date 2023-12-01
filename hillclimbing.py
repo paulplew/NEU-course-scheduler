@@ -8,11 +8,11 @@ def energy_function(schedule, tod_pref, day_off_pref, time_betweem_pref):
     energy = 0
     day_off = True
     for course in schedule:
-        if course.startTime is not None:
+        if not course.is_async():
             energy += time_of_day_score(course.startTime, tod_pref)
         else:
             # the course is async
-            energy += 1
+            energy += 1000
 
         if (day_off_pref in days_of_week(course.days)):
             day_off = False

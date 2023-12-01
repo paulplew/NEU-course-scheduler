@@ -31,6 +31,9 @@ class Schedule:
         # zip everything up with new lines
         return "\n".join(weekday_course_info)
 
+    def async_courses(self) -> list[Course]:
+        return [course for course in self._courses if course.is_async()]
+
     def __str__(self):
         course_strings = []
         for course in self._courses:

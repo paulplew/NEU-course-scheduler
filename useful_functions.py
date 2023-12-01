@@ -39,7 +39,7 @@ def avg_time_between(listof_courses):
         schedule_dict[day].sort(key=lambda x: x[0])
         if len(schedule_dict[day]) > 1:
             for i in range(len(schedule_dict[day])-1):
-                gap = (datetime.strptime(schedule_dict[day][i+1][0],"%H%M") - datetime.strptime(schedule_dict[day][i][1],"%H%M"))
+                gap = (schedule_dict[day][i+1][0] - schedule_dict[day][i][1])
                 hours, minutes, seconds = map(int, str(gap).split(':'))
                 total_gap += hours * 60 + minutes
                 n+=1
@@ -64,10 +64,6 @@ def time_of_day_score(startTime, tod_pref):
 
     assert goal_time != -1, f"Incorrect time of day preference provided: {tod_pref}"
     
-    if startTime is None:
-        # the class is async
-        return 0
-
     # every hour away from the goal is -25 points from the starting 50 points
     return 50 - ((abs(goal_time - int(startTime.strftime("%H%M"))) // 60) * 25)
  
@@ -109,7 +105,7 @@ def valid_schedule(schedule):
         schedule_dict[day].sort(key=lambda x: x[0])
         if len(schedule_dict[day]) > 1:
             for i in range(len(schedule_dict[day])-1):
-                gap = (int(schedule_dict[day][i+1][0]) - int(schedule_dict[day][i][1]))
+                gap = (int(schedule_dict[day][i+1][0].strftime("%H%M")) - int(schedule_dict[day][i][1].strftime("%H%M")))
                 if gap <= 0:
                     valid = False
     return valid

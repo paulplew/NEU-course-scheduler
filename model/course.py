@@ -17,8 +17,12 @@ class Course:
         building: str,
         credit_hours: int,
     ):
-        self.startTime = datetime.strptime(startTime, "%H%M")
-        self.endTime = datetime.strptime(endTime, "%H%M")
+        if None in [startTime, endTime]:
+            self.startTime = datetime(2023, 1, 1, 0, 0, 0)
+            self.endTime = datetime(2023, 1, 1, 0, 0, 0)
+        else:
+            self.startTime = datetime.strptime(startTime, "%H%M")
+            self.endTime = datetime.strptime(endTime, "%H%M")
         self.days = days
         self.title = title
         self.subject_course = subject_course
@@ -32,6 +36,8 @@ class Course:
         assert day < 5, "Day should be in the range of 0-4"
         return self.days[day]
 
+    def is_async(self) -> bool:
+        return not any(self.days)
 
     # used to make a dict from the course
     def __dict__(self):
