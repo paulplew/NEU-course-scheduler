@@ -44,7 +44,7 @@ time_between = int(input("Lastly, please enter the number of minutes that would 
 print("Thanks! Give us a minute while the program creates a personal class schedule")
 
 random_schedule = schedule_generator(courses)
-best_solution, best_energy = hillclimb_random_restarts(random_schedule, time_pref, day_off, time_between, 300, 20, courses)
+best_solution, best_energy = hillclimb_random_restarts(random_schedule, time_pref, day_off, time_between, 100, 20, courses)
 
 original_schedule = Schedule(random_schedule)
 print(f"Starting schedule with energy: {energy_function(random_schedule, time_pref, day_off, time_between)} is:\n")

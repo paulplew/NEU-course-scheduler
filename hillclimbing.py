@@ -18,7 +18,7 @@ def energy_function(schedule, tod_pref, day_off_pref, time_betweem_pref):
             day_off = False
 
     if day_off:
-        energy += 40
+        energy += 4000
     avg_time_between_classes = avg_time_between(schedule)
     if avg_time_between_classes is not None:
         energy -= abs(time_betweem_pref - avg_time_between_classes)
